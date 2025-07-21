@@ -12,7 +12,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Produk::all());
     }
 
     /**

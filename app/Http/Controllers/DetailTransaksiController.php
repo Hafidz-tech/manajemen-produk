@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
+use App\Models\DetailTransaksi;
 use Illuminate\Http\Request;
 
-class PelangganController extends Controller
+class DetailTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Pelanggan::all());
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class PelangganController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pelanggan $pelanggan)
+    public function show(DetailTransaksi $detailTransaksi)
     {
         //
     }
@@ -42,7 +42,7 @@ class PelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pelanggan $pelanggan)
+    public function edit(DetailTransaksi $detailTransaksi)
     {
         //
     }
@@ -50,7 +50,7 @@ class PelangganController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request, DetailTransaksi $detailTransaksi)
     {
         //
     }
@@ -58,7 +58,7 @@ class PelangganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pelanggan $pelanggan)
+    public function destroy(DetailTransaksi $detailTransaksi)
     {
         //
     }
