@@ -58,7 +58,16 @@ class ProdukController extends Controller
      */
     public function show($id)
     {
-        return $this->produkRepo->find($id);
+        try {
+            $data = $this->produkRepo->find($id);
+
+            return response()->json([
+                'message' => 'Data produk berhasil ditemukan',
+                'data' => $data
+            ], 200);
+        } catch(\Exception $e) {
+            return response()->json(['message' => 'Data produk tidak ada'], 200);
+        }
     }
 
     /**

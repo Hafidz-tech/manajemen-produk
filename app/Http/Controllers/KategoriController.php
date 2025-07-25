@@ -37,7 +37,7 @@ class KategoriController extends Controller
             return response()->json([
                 'message' => 'Validasi gagal',
                 'errors' => $e->errors(),
-            ], 422);
+            ], 404);
         } catch (\Exception $e) {
             //Jika terjadi error lain
             return response()->json([
@@ -58,7 +58,7 @@ class KategoriController extends Controller
             return response()->json([
                 'message' => 'Data berhasil ditemukan',
                 'data' => $kategori,
-            ], 202);
+            ], 200);
         } catch(\Exception $e) {
             return response()->json(['message' => 'Data tidak ditemukan'], 404);
         }
