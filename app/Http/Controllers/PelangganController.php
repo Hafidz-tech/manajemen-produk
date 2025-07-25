@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePelangganRequest;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,9 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pelanggan::create($request->validated());
+
+        return response()->json(['message' => 'Data pelanggan berhasil ditambahkan'], 201);
     }
 
     /**
@@ -52,14 +55,31 @@ class PelangganController extends Controller
      */
     public function update(Request $request, Pelanggan $pelanggan)
     {
-        //
+        $pelanggan->update($request->validated());
+
+        return response()->json(['message' => 'Data pelanggan berhasil diperbarui'], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pelanggan $pelanggan)
+    public function destroy($id)
     {
-        //
+        try {
+            $pelanggan = Pelanggan::find($id);
+
+            if(!$pelanggan) {
+                return response()->json(['message' => 'Pelanggan tidak ditemukan']);
+            }
+
+            $pelanggan->delete();
+
+            return response()->json(['message' => 'Data pelanggan berhasil dihapus']);
+        } catch(\Exception $e) {
+            return response()->json([
+                'message' => 'Terjadi kesalahan saat menghapus data',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }

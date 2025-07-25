@@ -12,7 +12,7 @@ class DetailTransaksiController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(DetailTransaksi::all());
     }
 
     /**
@@ -34,9 +34,18 @@ class DetailTransaksiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DetailTransaksi $detailTransaksi)
+    public function show($id)
     {
-        //
+        try {
+            $detailtransaksi = DetailTransaksi::findOrFail($id);
+
+            return response()->json([
+                'message' => 'Data berhasil ditemukan',
+                'data' => $detailtransaksi,
+            ], 202);
+        } catch(\Exception $e) {    
+            return response()->json(['message' => 'Data tidak ditemukan'], 500);
+        }
     }
 
     /**
